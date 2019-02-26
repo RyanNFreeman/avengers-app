@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import avengers from './data'
 
 import Home from './components/Home'
 import AvengersList from './components/AvengersList'
+import AvengerPage from './components/AvengerPage'
 
 
 import './App.css';
@@ -20,8 +21,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ul className='navbar'>
+          <li>
+            <Link to='/'>Home</Link>
+            <Link to='/avengers'>Avengers</Link>
+
+          </li>
+        </ul>
         <Route exact path='/' component={Home} />
-        <Route path='/avengers' component={AvengersList} />
+        <Route exact path='/avengers' component={AvengersList} />
+        <Route path='/avengers/:id' component={AvengerPage} />
 
       </div>
     );
